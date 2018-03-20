@@ -14,23 +14,18 @@ http://docs.nativescript.org/angular/code-samples/ui/tab-view
     Assign the tabItem directive an object that declares the tab item button's title and icon source.
     -->
     <StackLayout *tabItem="{title: 'Home', iconSource: getIconSource('home')}">
-        <!--
-        You can declare the layout and components of each view inside the TabView items directly.
-        In this case the view contents and back end logic are separated in nested components.
-        You can find these components in their respective folders /home, /browse etc.
-        -->
         <Home></Home>
     </StackLayout>
     <StackLayout *tabItem="{title: 'Ethics', iconSource: getIconSource('browse')}">
-        <Browse></Browse>
+        <Ethics></Ethics>
     </StackLayout>
     <StackLayout *tabItem="{title: 'Rules', iconSource: getIconSource('search')}">
-        <Search></Search>
+        <Rules></Rules>
     </StackLayout>
     <StackLayout *tabItem="{title: 'Game', iconSource: getIconSource('browse')}">
         <Game></Game>
     </StackLayout>
     <StackLayout *tabItem="{title: 'Settings', iconSource: getIconSource('browse')}">
-        <Game></Game>
+        <Settings></Settings>
     </StackLayout>
 </TabView>
