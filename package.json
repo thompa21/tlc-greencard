@@ -4,7 +4,10 @@
   "readme": "NativeScript Application",
   "repository": "<fill-your-repository-here>",
   "nativescript": {
-    "id": "org.nativescript.tlcgreencard"
+    "id": "org.nativescript.tlcgreencard",
+    "tns-ios": {
+      "version": "3.4.1"
+    }
   },
   "scripts": {
     "lint": "tslint \"app/**/*.ts\""

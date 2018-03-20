@@ -1,3 +1,8 @@
+*.js.map
+vendor*.ts
+**/*.js
+!tools/*.js
+**/*.css
 hooks/
 node_modules/
 platforms/
