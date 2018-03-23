@@ -3,6 +3,8 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
+import { LoginComponent } from "./login.component";
+import { Data } from "./shared/Data/data";
 
 import { NativeScriptHttpModule } from "nativescript-angular/http";
 
@@ -16,7 +18,11 @@ import { NativeScriptHttpModule } from "nativescript-angular/http";
         NativeScriptHttpModule
     ],
     declarations: [
-        AppComponent
+        AppComponent,
+        LoginComponent
+    ],
+    providers: [
+        Data
     ],
     schemas: [
         NO_ERRORS_SCHEMA
