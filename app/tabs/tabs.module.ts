@@ -11,10 +11,14 @@ import { TabsRoutingModule } from "./tabs-routing.module";
 
 import { TabsComponent } from "./tabs.component";
 
+import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angular";
+
+
 @NgModule({
     imports: [
         NativeScriptCommonModule,
-        TabsRoutingModule
+        TabsRoutingModule,
+        NativeScriptUISideDrawerModule
     ],
     declarations: [
         TabsComponent,

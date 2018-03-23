@@ -1,6 +1,10 @@
-<ActionBar class="action-bar">
-    <Label class="action-bar-title" [text]="title"></Label>
-</ActionBar>
+<!--ActionBar title="">
+    <StackLayout orientation="horizontal" ios:horizontalAlignment="center" android:horizontalAlignment="left">
+        <Label text="TLC Grönt Kort"></Label>
+    </StackLayout>
+    <NavigationButton *ngIf="android" icon="res://ic_menu_black_24dp"></NavigationButton>
+    <ActionItem *ngIf="ios" icon="res://ic_more_vert" ios.position="left"></ActionItem>
+</ActionBar-->
 
 <!--
 The TabView component provides a simple way to navigate between different views by
@@ -8,24 +12,21 @@ tapping on some of the tabs or by swiping between the views.
 Learn more about the TabView component in this documentation article:
 http://docs.nativescript.org/angular/code-samples/ui/tab-view
 -->
+
 <TabView (selectedIndexChanged)="onSelectedIndexChanged($event)">
-    <!--
-    To add a new TabView item, add a new layout component with a tabItem Angular directive.
-    Assign the tabItem directive an object that declares the tab item button's title and icon source.
-    -->
-    <StackLayout *tabItem="{title: 'Home', iconSource: getIconSource('home')}">
-        <Home></Home>
-    </StackLayout>
-    <StackLayout *tabItem="{title: 'Ethics', iconSource: getIconSource('browse')}">
-        <Ethics></Ethics>
-    </StackLayout>
-    <StackLayout *tabItem="{title: 'Rules', iconSource: getIconSource('search')}">
-        <Rules></Rules>
-    </StackLayout>
-    <StackLayout *tabItem="{title: 'Game', iconSource: getIconSource('browse')}">
-        <Game></Game>
-    </StackLayout>
-    <StackLayout *tabItem="{title: 'Settings', iconSource: getIconSource('browse')}">
-        <Settings></Settings>
-    </StackLayout>
-</TabView>
+            <StackLayout *tabItem="{title: 'Home', iconSource: getIconSource('home')}">
+                <Home></Home>
+            </StackLayout>
+            <StackLayout *tabItem="{title: 'Ethics', iconSource: getIconSource('browse')}">
+                <Ethics></Ethics>
+            </StackLayout>
+            <StackLayout *tabItem="{title: 'Rules', iconSource: getIconSource('search')}">
+                <Rules></Rules>
+            </StackLayout>
+            <StackLayout *tabItem="{title: 'Game', iconSource: getIconSource('browse')}">
+                <Game></Game>
+            </StackLayout>
+            <StackLayout *tabItem="{title: 'Settings', iconSource: getIconSource('browse')}">
+                <Settings></Settings>
+            </StackLayout>
+        </TabView>

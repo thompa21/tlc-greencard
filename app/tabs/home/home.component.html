@@ -1,4 +1,33 @@
-<ActionBar title="TLC Grönt kort"></ActionBar>
-<StackLayout verticalAlignment="center">
-    <Label [text]="username" class="h2 text-center"></Label>
-</StackLayout>
+<RadSideDrawer tkExampleTitle tkToggleNavButton>
+    <StackLayout tkDrawerContent class="sideStackLayout">
+        <StackLayout class="sideTitleStackLayout">
+            <Label text="Navigation Menu"></Label>
+        </StackLayout>
+        <StackLayout class="sideStackLayout">
+            <Label text="Primary" class="sideLabel sideLightGrayLabel"></Label>
+            <Label text="Social" class="sideLabel"></Label>
+            <Label text="Promotions" class="sideLabel"></Label>
+            <Label text="Labels" class="sideLabel sideLightGrayLabel"></Label>
+            <Label text="Important" class="sideLabel"></Label>
+            <Label text="Starred" class="sideLabel"></Label>
+            <Label text="Sent Mail" class="sideLabel"></Label>
+            <Label text="Drafts" class="sideLabel"></Label>
+        </StackLayout>
+        <Label text="Close Drawer" color="lightgray" padding="10" style="horizontal-align: center" (tap)="onCloseDrawerTap()"></Label>
+    </StackLayout>
+    <StackLayout tkMainContent>
+        <ActionBar title="">
+            <StackLayout orientation="horizontal" ios:horizontalAlignment="center" android:horizontalAlignment="left">
+                <Label text="TLC Grönt Kort"></Label>
+            </StackLayout>
+            <NavigationButton *ngIf="android" icon="res://ic_menu_black_24dp" (tap)="openDrawer()"></NavigationButton>
+            <ActionItem *ngIf="ios" icon="res://ic_more_vert" ios.position="left" (tap)="openDrawer()"></ActionItem>
+        </ActionBar>    
+        <GridLayout columns="*,*,*,*" rows="auto, *, *">
+            <GridLayout class="header-container" colSpan="5" columns="*,*,*,*,*">
+                <Label [text]="username" colSpan="5" horizontalAlignment="center" verticalAlignment="center" class="large-text"></Label>
+                <Label text="&#xf129;" col="4" horizontalAlignment="right" verticalAlignment="center" class="top-icon weather-icon small-icon" tap="openInfo"></Label>
+            </GridLayout>
+        </GridLayout>
+    </StackLayout>
+</RadSideDrawer>
