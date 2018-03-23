@@ -90,7 +90,7 @@ export class LoginComponent {
                 that.gotoapplication();
             }
 
-            if(args.url.indexOf("https://login.kth.se/logout")!==-1) {
+            if(args.url.indexOf("logout")!==-1) {
                 console.log("Utloggad!");
                 applicationSettingsModule.remove('jwttoken');
                 applicationSettingsModule.remove('alma_primaryid');
@@ -133,12 +133,12 @@ export class LoginComponent {
                     this.gotoapplication();
                 } else {
                     this.loggedin = false;
-                    this.webViewSrc = "https://apps.lib.kth.se/jwt/jwttokenkthcas_app_logout.php?returl=https://apps.lib.kth.se/jwt/callback.php"
+                    this.webViewSrc = "https://tlcgolfit.se/twitterauth/twitter_logout.php"
                 }
             }, (error) => {
                 console.log(error);
                 this.loggedin = false;
-                this.webViewSrc = "https://apps.lib.kth.se/jwt/jwttokenkthcas_app_logout.php?returl=https://apps.lib.kth.se/jwt/callback.php"
+                this.webViewSrc = "https://tlcgolfit.se/twitterauth/twitter_logout.php"
             });
         } else {
             //this.loggedin = false;
@@ -148,7 +148,7 @@ export class LoginComponent {
             this.loggedin = false;
             console.log(this.data.storage.logout);
             this.data.storage.length = 0;
-            this.webViewSrc = "https://apps.lib.kth.se/jwt/jwttokenkthcas_app_logout.php?returl=https://apps.lib.kth.se/jwt/callback.php"
+            this.webViewSrc = "https://tlcgolfit.se/twitterauth/twitter_logout.php"
             
         } else {
             //this.loggedin = true;
