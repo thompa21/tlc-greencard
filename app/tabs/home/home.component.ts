@@ -12,7 +12,6 @@ import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
 
 import { isAndroid, isIOS } from "platform";
 
-
 @Component({
     selector: "Home",
     moduleId: module.id,
