@@ -1,16 +1,20 @@
 import { Component, ViewChild, OnInit, AfterViewInit, ChangeDetectorRef } from "@angular/core";
 
-import { Router } from "@angular/router";
+//import { Router } from "@angular/router";
+import { RouterExtensions } from "nativescript-angular/router";
 import { HttpGetService } from "../../shared/HttpGetService/http-get.service";
 import * as applicationSettingsModule from "application-settings";
 
 import { Page } from "ui/page";
 import { ActionItem } from "ui/action-bar";
 import { Observable } from "data/observable";
+
 import { RadSideDrawerComponent, SideDrawerType } from "nativescript-ui-sidedrawer/angular";
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
 
 import { isAndroid, isIOS } from "platform";
+
+import { Data } from "../../shared/Data/data";
 
 @Component({
     selector: "Home",
@@ -24,9 +28,10 @@ export class HomeComponent implements AfterViewInit, OnInit {
     private _mainContentText: string;
 
     constructor(
-        private router: Router,
+        private router: RouterExtensions,
         private myGetService: HttpGetService,
-        private _changeDetectionRef: ChangeDetectorRef
+        private _changeDetectionRef: ChangeDetectorRef,
+        private data: Data
     ) {
         /* ***********************************************************
         * Use the constructor to inject services.
@@ -56,34 +61,24 @@ export class HomeComponent implements AfterViewInit, OnInit {
             this.android = false;
             this.ios = true;
         }
-       this.mainContentText = "SideDrawer for NativeScript can be easily setup in the HTML definition of your page by defining tkDrawerContent and tkMainContent. The component has a default transition and position and also exposes notifications related to changes in its state. Swipe from left to open side drawer.";
 
-       //Hämta information från token
-       this.myGetService.getuser()
-       .subscribe(
-           (result) => {
-               console.dir(result);
-               this.username = "Välkommen " + result.data.userName
-               /*
-               this.myGetService.getAlmaUser(applicationSettingsModule.getString('alma_primaryid'))
-                   .subscribe((result) => {
-                       
-                   }, (error) => {
-                       
-                   });*/
-           }, 
-           (error) => {
-               console.log(error);
-           });
+        //Hämta information från token
+        this.myGetService.getuser()
+        .subscribe(
+            (result) => {
+                console.dir(result);
+                this.username = "Välkommen " + result.data.userName
+                /*
+                this.myGetService.getAlmaUser(applicationSettingsModule.getString('alma_primaryid'))
+                    .subscribe((result) => {
 
-    }
+                    }, (error) => {
 
-    get mainContentText() {
-        return this._mainContentText;
-    }
-
-    set mainContentText(value: string) {
-        this._mainContentText = value;
+                    });*/
+            }, 
+            (error) => {
+                console.log(error);
+            });
     }
 
     public openDrawer() {
@@ -91,7 +86,16 @@ export class HomeComponent implements AfterViewInit, OnInit {
     }
 
     public onCloseDrawerTap() {
-       this.drawer.closeDrawer();
+        this.drawer.closeDrawer();
+    }
+
+    public logout() {
+        console.log("logout");
+        applicationSettingsModule.remove('jwttoken');
+        this.data.storage = {
+            "logout": "true"
+        }
+        this.router.navigate([""],{ clearHistory: true });
     }
     
 }

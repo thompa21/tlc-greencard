@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, NgZone } from "@angular/core";
-import {RouterExtensions } from "nativescript-angular/router";
+import { RouterExtensions } from "nativescript-angular/router";
 import { setInterval, setTimeout, clearInterval } from "timer";
 import { HttpGetService } from "./shared/HttpGetService/http-get.service";
 

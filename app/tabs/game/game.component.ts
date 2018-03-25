@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 
+import {registerElement} from "nativescript-angular/element-registry";
+
 @Component({
     selector: "Game",
     moduleId: module.id,
@@ -16,6 +18,7 @@ export class GameComponent implements OnInit {
         /* ***********************************************************
         * Use the "ngOnInit" handler to initialize data for the view.
         *************************************************************/
-       
+
+       registerElement("VideoPlayer", () => require("nativescript-videoplayer").Video);
     }
 }

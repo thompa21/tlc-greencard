@@ -1,4 +1,34 @@
-<GridLayout class="page page-content">
-    <Label class="page-icon fa" text="&#xf015;"></Label>
-    <Label class="page-placeholder" text="<!-- lPage content goes here -->"></Label>
-</GridLayout>
+<RadSideDrawer drawerLocation="Right" tkExampleTitle tkToggleNavButton>
+    <StackLayout tkMainContent>
+        <GridLayout columns="*,*,*,*" rows="auto, auto, *">
+            <GridLayout class="header-container" colSpan="5" columns="*,*,*,*,*">
+                <Label text="TLC Grönt Kort" colSpan="5" horizontalAlignment="left" verticalAlignment="center" class="actionbartext"></Label>
+                <Label text="&#xe55a;" class="mdi actionbartext" col="4" horizontalAlignment="right" verticalAlignment="center" (tap)="openDrawer()"></Label>
+            </GridLayout>
+            <GridLayout style="height: 100;color:#ffffff; margin:0; background-color:rgba(0, 0, 0, 0.400);" colSpan="4" row="1">
+                <Label [text]="username" horizontalAlignment="center" verticalAlignment="center" class="tab-header"></Label>
+            </GridLayout>
+            <ScrollView colSpan="4" row="2">
+                <StackLayout style="color:#ffffff; margin:0; background-color:rgba(0, 0, 0, 0.400);">
+                        <VideoPlayer style="margin:20" row="0" colSpan="4"
+                            src="https://tlcgolfit.se/videos/IMG_0010.MOV"
+                            autoplay="false" 
+                            height="300"></VideoPlayer>
+                        <VideoPlayer style="margin:20" row="0" colSpan="4"
+                            src="https://tlcgolfit.se/videos/IMG_0018.MOV"
+                            autoplay="false" 
+                            height="300"></VideoPlayer>
+                        <VideoPlayer style="margin:20" row="0" colSpan="4"
+                            src="https://tlcgolfit.se/videos/IMG_0010.MOV"
+                            autoplay="false" 
+                            height="300"></VideoPlayer>
+                        <VideoPlayer style="margin:20" row="0" colSpan="4"
+                            src="https://tlcgolfit.se/videos/IMG_0018.MOV"
+                            autoplay="false" 
+                            height="300"></VideoPlayer>
+                </StackLayout>
+            </ScrollView>
+            
+        </GridLayout>
+    </StackLayout>
+</RadSideDrawer>

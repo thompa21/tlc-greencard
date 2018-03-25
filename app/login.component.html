@@ -1,9 +1,15 @@
-<GridLayout rows="75 * 50" sdkExampleTitle sdkToggleNavButton visibility="{{ loggedin ? 'visible' : 'collapsed' }}">
-    <WebView row="1" #myWebView [src]="webViewSrc"></WebView>
-    <Label row="2" #labelResult></Label>
+<GridLayout columns="*,*,*,*" rows="auto, *">
+    <GridLayout class="header-container" colSpan="4" columns="*,*">
+        <Label text="TLC Grönt Kort" colSpan="2" horizontalAlignment="left" verticalAlignment="center" class="actionbartext"></Label>
+        <Label text="&#xe55a;" class="mdi actionbartext" col="1" horizontalAlignment="right" verticalAlignment="center" (tap)="openDrawer()"></Label>
+    </GridLayout>
+    <GridLayout rows="*,auto" row="1" colSpan="4" visibility="{{ loggedin ? 'visible' : 'hidden' }}">
+        <WebView #myWebView [src]="webViewSrc"></WebView>
+        <Label row="1" #labelResult></Label>
+    </GridLayout>
+    <StackLayout rows = "*,*,*" row="1" colSpan="4" visibility="{{ loggedin ? 'collapsed' : 'visible' }}">
+        <Button row="0" class="btn btn-primary w-full" text="Login with Twitter" (tap)="logintwitter()"></Button>
+        <Button row="1" class="btn btn-primary w-full" text="Login with Facebook" (tap)="loginfacebook()"></Button>
+        <Button row="2" class="btn btn-primary w-full" text="Login with Instagram" (tap)="logininstagram()"></Button>
+    </StackLayout>
 </GridLayout>
-<StackLayout rows="75 * 50" sdkExampleTitle sdkToggleNavButton visibility="{{ loggedin ? 'collapsed' : 'visible' }}">
-    <Button class="btn btn-primary w-full" text="Login with Twitter" (tap)="logintwitter()"></Button>
-    <Button class="btn btn-primary w-full" text="Login with Facebook" (tap)="loginfacebook()"></Button>
-    <Button class="btn btn-primary w-full" text="Login with Instagram" (tap)="logininstagram()"></Button>
-</StackLayout>
