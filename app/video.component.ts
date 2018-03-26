@@ -34,7 +34,9 @@ export class VideoComponent implements OnInit {
         /* ***********************************************************
         * Use the "ngOnInit" handler to initialize data for the view.
         *************************************************************/
-        frame.topmost().android.activity.getWindow().getDecorView().setSystemUiVisibility(android.view.View.SYSTEM_UI_FLAG_FULLSCREEN);
+        if(isAndroid){
+            frame.topmost().android.activity.getWindow().getDecorView().setSystemUiVisibility(android.view.View.SYSTEM_UI_FLAG_FULLSCREEN);
+        }
         this._page.actionBarHidden = true;
         this.showvideo = true;
         this.videoPlayer.nativeElement.play();
