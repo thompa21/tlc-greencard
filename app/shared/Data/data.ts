@@ -5,6 +5,8 @@ export class Data {
 
     public storage: any;
 
+    public videourl: any;
+
     public constructor() { }
 
 }

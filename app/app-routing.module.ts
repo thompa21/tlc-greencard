@@ -7,7 +7,7 @@ import { VideoComponent } from "./video.component";
 
 const routes: Routes = [
     { path: "", component: LoginComponent },
-    { path: "videoscreen", component: VideoComponent },
+    { path: "videoscreen/:url", component: VideoComponent },
     { path: "home", redirectTo: "/tabs", pathMatch: "full" },
     { path: "tabs", loadChildren: "./tabs/tabs.module#TabsModule" }
 ];

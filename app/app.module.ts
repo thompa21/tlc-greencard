@@ -6,6 +6,7 @@ import { AppComponent } from "./app.component";
 import { LoginComponent } from "./login.component";
 import { VideoComponent } from "./video.component";
 import { Data } from "./shared/Data/data";
+import { Video } from "./shared/video/video";
 
 import { NativeScriptHttpModule } from "nativescript-angular/http";
 
@@ -24,7 +25,8 @@ import { NativeScriptHttpModule } from "nativescript-angular/http";
         VideoComponent
     ],
     providers: [
-        Data
+        Data,
+        Video
     ],
     schemas: [
         NO_ERRORS_SCHEMA

@@ -4,65 +4,71 @@ import { screen, isIOS, isAndroid } from "tns-core-modules/platform/platform"
 import { EventData } from "data/observable"
 import { Page } from "ui/page";
 
+import {ActivatedRoute} from "@angular/router";
+
 import frame = require("ui/frame");
+
+import {setCurrentOrientation , orientationCleanup} from 'nativescript-screen-orientation'
+
+import { Data } from "./shared/Data/data";
 
 import {registerElement} from "nativescript-angular/element-registry";
 registerElement("VideoPlayer", () => require("nativescript-videoplayer").Video);
 
+//för att native "android" ska fungera
 declare var android: any
+
 @Component({
     selector: "VideoScreen",
     moduleId: module.id,
     templateUrl: "./video.component.html"
 })
-export class VideoComponent implements OnInit {
-    constructor(private _page: Page) {
-        /* ***********************************************************
-        * Use the constructor to inject services.
-        *************************************************************/
-       on("orientationChanged", this.onOrientationChanged);
-    }
-    showvideo: boolean
-    @ViewChild("video_player") videoPlayer: ElementRef;
 
-    public fill: boolean = false;
-    public src: string = "https://archive.org/download/ksnn_compilation_master_the_internet/ksnn_compilation_master_the_internet_512kb.mp4"
-    
-    public height = Math.floor(screen.mainScreen.widthPixels*9/16)/2;
+export class VideoComponent implements OnInit {
+    constructor(
+        private _page: Page,
+        private data: Data,
+        private route: ActivatedRoute
+    ) {
+        this.route.params.subscribe((params) => {
+            this.src = params["url"];
+        });
+
+        _page.on("navigatedTo",function(){
+            setCurrentOrientation("landscape",function(){
+            console.log("landscape orientation");
+            });
+        });
+        
+        _page.on("navigatingFrom",function(){
+            orientationCleanup();
+        });
+
+    }
+
+    id: number;
+    showvideo: boolean;
+    @ViewChild("video_player") videoPlayer: ElementRef;
+    public src: string;
 
     ngOnInit(): void {
-        /* ***********************************************************
-        * Use the "ngOnInit" handler to initialize data for the view.
-        *************************************************************/
+        //if (this.data.videourl) {
+            //this.src = this.data.videourl.url
+        //}
+
         if(isAndroid){
-            frame.topmost().android.activity.getWindow().getDecorView().setSystemUiVisibility(android.view.View.SYSTEM_UI_FLAG_FULLSCREEN);
+            frame.topmost().android.activity.getWindow().getDecorView().setSystemUiVisibility(android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                | android.view.View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                | android.view.View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                | android.view.View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
+                | android.view.View.SYSTEM_UI_FLAG_FULLSCREEN
+                | android.view.View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         }
         this._page.actionBarHidden = true;
         this.showvideo = true;
         this.videoPlayer.nativeElement.play();
     }
-
-    public onOrientationChanged = (evt) => {
-        console.log("Orientation has changed !");
-        console.log(evt.eventName); // orientationChanged
-        console.log(evt.newValue); //landscape or portrait
-        
-        let height = Math.floor(screen.mainScreen.widthPixels*9/16)/2;
-        if(evt.newValue == "landscape") {
-            let height = screen.mainScreen.heightPixels;
-        } else {
-            
-        }
-        this.height = height;
-        let time = this.videoPlayer.nativeElement.getCurrentTime();
-        this.videoPlayer.nativeElement.seekToTime(time);
-      };
-
-    public onSeekToTimeComplete(evt: EventData){
-        console.log("seek to time done");
-        
-    }
-
+    //behövs tillbakaknapp för IOS?
     unloadvideo() {
         this.showvideo = false;
     }
