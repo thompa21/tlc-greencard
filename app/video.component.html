@@ -1,0 +1,11 @@
+<GridLayout rows="*" columns="*, *" backgroundColor="#000000">
+    <VideoPlayer 
+        #video_player 
+        [src]="src" 
+        row="0" 
+        colSpan="2" 
+        [height]="height"
+        [fill]="fill"
+        (seekToTimeComplete)="onSeekToTimeComplete($event)"></VideoPlayer>
+    <Label text="Label On Top of Video View" row="0" colSpan="2" color="#fff" horizontalAlignment="center" (tap)="unloadvideo()"></Label>
+</GridLayout>

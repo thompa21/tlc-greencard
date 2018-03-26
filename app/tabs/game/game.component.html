@@ -7,16 +7,9 @@
             <GridLayout style="height: 100;color:#ffffff; margin:0; background-color:rgba(0, 0, 0, 0.400);" colSpan="4" row="1">
                 <Label [text]="username" horizontalAlignment="center" verticalAlignment="center" class="tab-header"></Label>
             </GridLayout>
-            <GridLayout visibility="{{ showvideo ? 'visible' : 'collapsed' }}" style="color:#ffffff; margin:0; background-color:rgba(0, 0, 0, 0.400);" colSpan="4" row="2">
-                <GridLayout rows="*" columns="*, *" backgroundColor="#000000">
-                    <VideoPlayer #video_player [src]="src" height="300"></VideoPlayer>
-                    <Label text="Label On Top of Video View" row="0" colSpan="2" color="#fff" horizontalAlignment="center" (tap)="unloadvideo()"></Label>
-                </GridLayout>
-            </GridLayout>
-            
-            <ScrollView style="color:#ffffff; margin:0; background-color:rgba(0, 0, 0, 0.400);" visibility="{{ showvideo ? 'collapsed' : 'visible' }}" colSpan="4" row="2">
+            <ScrollView style="color:#ffffff; margin:0; background-color:rgba(0, 0, 0, 0.400);" colSpan="4" row="2">
                 <Label height="100" text="Showvideo" color="#fff" horizontalAlignment="center" (tap)="loadvideo('')"></Label>
-                <Label height="100" text="number2" color="#fff" horizontalAlignment="center" (tap)="loadvideo('https://tlcgolfit.se/videos/IMG_0018.MOV')"></Label>
+                <Label height="100" text="number2" color="#fff" horizontalAlignment="center" (tap)="loadvideo('')"></Label>
             </ScrollView>
             
         </GridLayout>
