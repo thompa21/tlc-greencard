@@ -81,6 +81,8 @@ ActionBar {
     background-color: #1954a6;
     color: #7e2f2f;
     padding: 5;
+    visibility: hidden;
+    height: 0;
 }
 
 .listlabel {
@@ -98,13 +100,13 @@ ActionBar {
     font-size: 20px;
     padding-top: 10px;
     font-family: "Copperplate";
-
+    color: rgb(221, 221, 221);
 }
 
 .page-header {
     padding-top: 10px;
     font-size: 20px;
-    background-color: rgba(255, 255, 255, 0.116);
+    /*background-color: rgba(255, 255, 255, 0.116);*/
 }
 
 .app-background-image {

@@ -1,0 +1,46 @@
+<RadSideDrawer drawerLocation="Right" tkExampleTitle tkToggleNavButton>
+    <StackLayout tkDrawerContent class="sideStackLayout">
+        <StackLayout class="sideTitleStackLayout">
+            <Label text="Navigation Menu"></Label>
+        </StackLayout>
+        <StackLayout class="sideStackLayout">
+            <Label text="Primary" class="sideLabel sideLightGrayLabel"></Label>
+            <Label text="Social" class="sideLabel"></Label>
+            <Label text="Promotions" class="sideLabel"></Label>
+            <Label text="Labels" class="sideLabel sideLightGrayLabel"></Label>
+            <Label text="Important" class="sideLabel"></Label>
+            <Label text="Starred" class="sideLabel"></Label>
+            <Label text="Sent Mail" class="sideLabel"></Label>
+            <Label text="Logout" class="sideLabel" (tap)="logout()"></Label>
+        </StackLayout>
+        <Label text="Close Drawer" color="lightgray" padding="10" style="horizontal-align: center" (tap)="onCloseDrawerTap()"></Label>
+    </StackLayout>
+    <StackLayout tkMainContent>
+        <GridLayout columns="*,*,*,*" rows="auto, auto, *, *">
+            <GridLayout class="header-container" colSpan="4" columns="auto,auto,*">
+                <Image width="80" row="0" col="0" src="~/images//TLCGolf_logo.png" horizontalAlignment="left" verticalAlignment="center"></Image>
+                <Label style="padding-left:10;" text="Grönt Kort" col="1" horizontalAlignment="left" verticalAlignment="center" class="actionbartext"></Label>
+                <Label text="&#xe55a;" class="mdi actionbartext" col="2" horizontalAlignment="right" verticalAlignment="center" (tap)="openDrawer()"></Label>
+            </GridLayout>
+            <StackLayout colSpan="4" row="1">
+                <Label text="Spelet" row="2" colSpan="2" horizontalAlignment="center" verticalAlignment="center" class="tab-header"></Label>
+            </StackLayout>
+            <GridLayout style="color:#ffffff; margin:0; background-color:rgba(0, 0, 0, 0.4);" colSpan="4" row="2">
+                <ListView [items]="videoList" (itemTap)="onItemTap($event)" class="small-spacing">
+                    <ng-template let-item="item">
+                        <StackLayout>
+                            <Label height="50" [text]="item.name" class="medium-spacing" ></Label>
+                        </StackLayout>
+                    </ng-template>
+                </ListView>
+            </GridLayout>
+            <GridLayout rows="*" columns="*,*,*,*,*" style="height:50;color:#ffffff; margin:0; background-color:rgb(255, 255, 255);" class="blue3-container" colSpan="4" row="3" verticalAlignment="bottom">
+                <Image (tap)="gotopage('home')" stretch="none" col="0"  src="res://ic_menu_black_24dp" horizontalAlignment="center" class="top" verticalAlignment="center"></Image>
+                <Image (tap)="gotopage('ethics')" stretch="none" col="1" src="res://ic_menu_black_24dp" horizontalAlignment="center" class="top" verticalAlignment="center"></Image>
+                <Image (tap)="gotopage('rules')" stretch="none" col="2" src="res://ic_menu_black_24dp" horizontalAlignment="center" class="top" verticalAlignment="center"></Image>
+                <Image style="background-color:rgb(255, 127, 227)" (tap)="gotopage('game')" stretch="none" col="3"  src="res://ic_menu_black_24dp" horizontalAlignment="center" class="top" verticalAlignment="center"></Image>
+                <Image (tap)="gotopage('settings')" stretch="none" col="4"  src="res://ic_menu_black_24dp" horizontalAlignment="center" class="top" verticalAlignment="center"></Image>
+            </GridLayout>
+        </GridLayout>
+    </StackLayout>
+</RadSideDrawer>
