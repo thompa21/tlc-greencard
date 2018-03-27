@@ -41,6 +41,12 @@ export class VideoComponent implements OnInit {
         });
         
         _page.on("navigatingFrom",function(){
+            
+            if(isAndroid){
+                frame.topmost().android.activity.getWindow().getDecorView().setSystemUiVisibility(android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                    | android.view.View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                    | android.view.View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+            }
             orientationCleanup();
         });
 
@@ -61,8 +67,7 @@ export class VideoComponent implements OnInit {
                 | android.view.View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                 | android.view.View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                 | android.view.View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
-                | android.view.View.SYSTEM_UI_FLAG_FULLSCREEN
-                | android.view.View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+                | android.view.View.SYSTEM_UI_FLAG_FULLSCREEN);
         }
         this._page.actionBarHidden = true;
         this.showvideo = true;
