@@ -31,7 +31,8 @@ export class HomeComponent implements AfterViewInit, OnInit {
         private router: RouterExtensions,
         private myGetService: HttpGetService,
         private _changeDetectionRef: ChangeDetectorRef,
-        private data: Data
+        private data: Data,
+        private _page: Page
     ) {
         /* ***********************************************************
         * Use the constructor to inject services.
@@ -51,12 +52,11 @@ export class HomeComponent implements AfterViewInit, OnInit {
     }
 
     ngOnInit(): void {
-        /* ***********************************************************
-        * Use the "ngOnInit" handler to initialize data for the view.
-        *************************************************************/
-       if (isAndroid){
-                this.android = true;
-                this.ios = false;
+        this._page.actionBarHidden = true;
+
+        if (isAndroid){
+            this.android = true;
+            this.ios = false;
         } else {
             this.android = false;
             this.ios = true;

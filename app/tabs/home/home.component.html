@@ -17,11 +17,12 @@
     </StackLayout>
     <StackLayout tkMainContent>
         <GridLayout columns="*,*,*,*" rows="auto, auto, *, *, *">
-            <GridLayout class="header-container" colSpan="5" columns="*,*,*,*,*">
-                <Label text="TLC Grönt Kort" colSpan="5" horizontalAlignment="left" verticalAlignment="center" class="actionbartext"></Label>
-                <Label text="&#xe55a;" class="mdi actionbartext" col="4" horizontalAlignment="right" verticalAlignment="center" (tap)="openDrawer()"></Label>
+            <GridLayout class="header-container" colSpan="4" columns="auto,auto,*">
+                <Image width="80" row="0" col="0" src="~/images//TLCGolf_logo.png" horizontalAlignment="left" verticalAlignment="center"></Image>
+                <Label style="padding-left:10;" text="Grönt Kort" col="1" horizontalAlignment="left" verticalAlignment="center" class="actionbartext"></Label>
+                <Label text="&#xe55a;" class="mdi actionbartext" col="2" horizontalAlignment="right" verticalAlignment="center" (tap)="openDrawer()"></Label>
             </GridLayout>
-            <GridLayout style="height: 100;color:#ffffff; margin:0; background-color:rgba(0, 0, 0, 0.400);" colSpan="4" row="1">
+            <GridLayout style="height: 100;color:#ffffff; margin:0; background-color:rgba(0, 0, 0, 0.116);" colSpan="4" row="1">
                 <Label [text]="username" horizontalAlignment="center" verticalAlignment="center" class="tab-header"></Label>
             </GridLayout>
             <GridLayout rows="*,*,*" style="color:#ffffff;width:100;height:100;border-radius:100; margin:0; background-color:rgba(0, 0, 0, 0.400);" colSpan="2" row="2">

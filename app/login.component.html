@@ -1,15 +1,23 @@
 <GridLayout columns="*,*,*,*" rows="auto, *">
-    <GridLayout class="header-container" colSpan="4" columns="*,*">
-        <Label text="TLC Grönt Kort" colSpan="2" horizontalAlignment="left" verticalAlignment="center" class="actionbartext"></Label>
-        <Label text="&#xe55a;" class="mdi actionbartext" col="1" horizontalAlignment="right" verticalAlignment="center" (tap)="openDrawer()"></Label>
+    <GridLayout class="header-container" colSpan="4" columns="auto,*">
+        <Image width="80" row="0" col="0" src="~/images//TLCGolf_logo.png" horizontalAlignment="left"></Image>
+        <Label style="padding-left:10;" text="Grönt Kort" col="1" horizontalAlignment="left" verticalAlignment="center" class="actionbartext"></Label>
     </GridLayout>
     <GridLayout rows="*,auto" row="1" colSpan="4" visibility="{{ loggedin ? 'visible' : 'hidden' }}">
         <WebView #myWebView [src]="webViewSrc"></WebView>
         <Label row="1" #labelResult></Label>
     </GridLayout>
-    <StackLayout rows = "*,*,*" row="1" colSpan="4" visibility="{{ loggedin ? 'collapsed' : 'visible' }}">
-        <Button row="0" class="btn btn-primary w-full" text="Login with Twitter" (tap)="logintwitter()"></Button>
-        <Button row="1" class="btn btn-primary w-full" text="Login with Facebook" (tap)="loginfacebook()"></Button>
-        <Button row="2" class="btn btn-primary w-full" text="Login with Instagram" (tap)="logininstagram()"></Button>
+    <StackLayout row="1" colSpan="4" visibility="{{ loggedin ? 'collapsed' : 'visible' }}">
+        <StackLayout style="color:#ffffff;height:50; margin:0;" class="page-header">
+            <Label height="50" text="Logga in" horizontalAlignment="center"></Label>
+        </StackLayout>
+        <GridLayout (tap)="logintwitter()" rows="*,*" style="color:#ffffff;width:150;height:150; margin:5;" colSpan="2" row="1">
+            <Image height="100 "row="0" col="2" colSpan="2" src="~/images//twitter_circle_512.png" horizontalAlignment="center"></Image>
+            <Label height="50" text="Twitter" row="1" colSpan="2" horizontalAlignment="center" class="large-text"></Label>
+        </GridLayout>
+        <GridLayout (tap)="loginfacebook()" rows="*,*" style="color:#ffffff;width:150;height:150; margin:5;" colSpan="2" row="3">
+            <Image row="0" col="2" colSpan="2" src="~/images//facebook_circle_512.png" horizontalAlignment="center" verticalAlignment="center"></Image>
+            <Label text="Facebook" row="1" colSpan="2" horizontalAlignment="center" class="large-text"></Label>
+        </GridLayout>
     </StackLayout>
-</GridLayout>
+</GridLayout>           

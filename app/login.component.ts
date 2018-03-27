@@ -30,7 +30,8 @@ export class LoginComponent {
     constructor(private router: RouterExtensions, 
         private myGetService: HttpGetService,
         private ngZone: NgZone,
-        private data: Data
+        private data: Data,
+        private _page: Page
     ) {
         this.input = {
             "kthid": "tholind",
@@ -123,6 +124,7 @@ export class LoginComponent {
     }
 
     ngOnInit() {
+        this._page.actionBarHidden = true;
         console.log('appsettings:  ' + applicationSettingsModule.getString('jwttoken', 'unset'));
         if (applicationSettingsModule.getString('jwttoken', 'unset') !== 'unset'){
             this.myGetService.checkJWT()
