@@ -1,4 +1,4 @@
-<RadSideDrawer drawerLocation="Right" tkExampleTitle tkToggleNavButton>
+<RadSideDrawer drawerLocation="Bottom" tkExampleTitle tkToggleNavButton>
     <StackLayout tkDrawerContent class="sideStackLayout">
         <StackLayout class="sideTitleStackLayout">
             <Label text="Navigation Menu"></Label>
@@ -13,7 +13,7 @@
             <Label text="Sent Mail" class="sideLabel"></Label>
             <Label text="Logout" class="sideLabel" (tap)="logout()"></Label>
         </StackLayout>
-        <Label text="Close Drawer" color="lightgray" padding="10" style="horizontal-align: center" (tap)="onCloseDrawerTap()"></Label>
+        <Label text="Close Drawer" color="lightgray" padding="10" horizontalAlignment="center" (tap)="onCloseDrawerTap()"></Label>
     </StackLayout>
     <Gradient direction="to right" colors="#FF0077, red, #FF00FF" tkMainContent>
         <GridLayout columns="*,*,*,*" rows="auto, *, *, *, *">
